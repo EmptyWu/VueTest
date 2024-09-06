@@ -19,3 +19,11 @@ export function is(val:unknown,type:string){
 export function isFunction<T = Function> (val:unknown):val is T {
     return is(val,'Function') || is(val,'AsyncFunction');
 }
+export const isObject = (val: any): val is Record<any, any> => {
+    return val !== null && is(val, 'Object');
+  };
+  
+export function isString(val: unknown): val is string {
+    return is(val, 'String');
+}
+  

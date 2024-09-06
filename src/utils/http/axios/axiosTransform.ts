@@ -1,5 +1,11 @@
 import type {AxiosRequestConfig,AxiosResponse} from 'axios';
-import { CreateAxiosOptions, RequestOptions,Result } from "./types";
+import type { RequestOptions,Result } from "./types";
+
+export interface CreateAxiosOptions extends AxiosRequestConfig {
+    authenticationScheme?: string;
+    transform?: AxiosTransform;
+    requestOptions?: RequestOptions;
+  }
 
 export abstract class  AxiosTransform {
     beforeRequestHook?:(config:AxiosRequestConfig,options:RequestOptions)=>AxiosRequestConfig;

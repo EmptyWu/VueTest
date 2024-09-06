@@ -19,6 +19,9 @@ RUN npm i && \
     npm i typescript@latest --save-dev && \
     npm i gh-pages && \
     npm i --save axios && \
+    npm i -D @vicons/ionicons5 && \
+    npm i -D vfonts && \
+    npm i -D naive-ui && \
 #     npm i --save @fortawesome/fontawesome-svg-core && \
 #     npm i --save @fortawesome/free-solid-svg-icons && \
 #     npm i --save @fortawesome/free-regular-svg-icons && \
