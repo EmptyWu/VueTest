@@ -1,13 +1,10 @@
 import { resultSuccess } from "../_util";
-import i18n from '../../src/i18n/index';
 //import {useI18n} from 'vue-i18n'
 //const {t}=useI18n()
-const menuList=(locale:string)=>{
-    i18n.global.locale.value=locale;
-    console.log(`Current Locale: ${i18n.global.locale.value}`);
+const menuList=()=>{
     const result:any[]=[
         {
-            label: ()=>i18n.global.t('form'),
+            label: '表單',
             key: 'form',
             type: 1,
             subtitle: 'form',
@@ -39,12 +36,11 @@ const menuList=(locale:string)=>{
 };
 
 export default [{
-    url:'/api/menu/list',
+    url:'/api/menu/list2',
     timeout:1000,
     method:'get',
-    response:(config: any)=>{
-        const locale = config.query.locale || 'en-US'; // 默认语言是 'en-US'
-        const list=menuList(locale);
+    response:()=>{
+        const list=menuList();
         return resultSuccess({list});
     },
 }];

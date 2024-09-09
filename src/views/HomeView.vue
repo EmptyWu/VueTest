@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref,onMounted,computed} from 'vue';
 import axios from 'axios';
+import {RouterLink} from 'vue-router';
 
 import TheWelcome from '../components/TheWelcome.vue'
 import {useI18n} from 'vue-i18n'
@@ -17,7 +18,7 @@ const handleChangeLanguage =(e)=>{
 
 const testmenu=()=>{
 
-  const res= axios.get(`/api/menu/list?locale=${locale.value}`).then(res=>{
+  const res= axios.get(`/api/menu/list2`).then(res=>{
     const list =res.data.result;
     i18n.global.locale=locale.value;
     //console.log(i18n.global.locale);
@@ -48,9 +49,11 @@ onMounted(()=>{
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <ul>
+    <li><router-link to="/">Go to Home</router-link></li>
+    <li><router-link to="/about">about</router-link></li>
+    <li><router-link to="/layout">layout</router-link></li>
+  </ul>
   <div>
     <n-space>
     <n-button>Default</n-button>

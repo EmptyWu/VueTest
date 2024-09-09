@@ -4,6 +4,7 @@ import type {RouteRecordRaw} from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import type {IModuleType} from './types';
 import { layout, ParentLayout } from './constant';
+import axios from 'axios';
 
 
 
@@ -27,9 +28,17 @@ export const constantRouter:RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: layout
+    component: layout,
+    children:[
+      {
+        path: 'about',
+        name: 'about',
+        component: ()=>import('../views/AboutView.vue')
+      }
+    ]
   },
-  ...routeModuleList];
+  ...routeModuleList
+];
   
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +46,24 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
   routes: constantRouter
 })
+
+const fetchRoutes = async () => {
+  const res = await axios.get('/api/menu/list2');
+  
+  const routes = res.data.result.list;
+
+    routes.forEach(route => {
+      router.addRoute({
+        path: route.path,
+        name: route.name,
+        //component: () => import(`../views/${route.component}.vue`) // 动态加载组件
+        component : ()=>import(`${route.component}`),
+      });
+    });
+}
+//fetchRoutes();
+
+console.log(`路由列表,`,router.getRoutes());
 
 export function setupRouter(app:App) {
   app.use(router);

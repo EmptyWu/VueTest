@@ -12,6 +12,9 @@ import {
     LogOutOutline as HomeIcon,
 }from '@vicons/ionicons5';
 
+import { useDialog, useMessage,useNotification,NAvatar } from 'naive-ui';
+import type {NotificationType} from 'naive-ui';
+
 const getDarkTheme=ref(false);
 const collapsed= ref(false);
 const activeKey:ref<string | null> =ref(null);
@@ -77,6 +80,38 @@ const menuOptions: MenuOption[] = [
     ]
   }
 ]
+
+const dialog = useDialog();
+const message = useMessage();
+const handleConfirm = () => {
+  dialog.warning({
+          title: '警告',
+          content: '你确定？',
+          positiveText: '确定',
+          negativeText: '不确定',
+          onPositiveClick: () => {
+            message.success('确定')
+          },
+          onNegativeClick: () => {
+            message.error('不确定')
+          }
+        })
+};
+const notification = useNotification()
+
+const notify = (type: NotificationType) => {
+  notification[type]({
+    content: '訊息',
+    meta: '訊息內容',
+    duration: 2500,
+    keepAliveOnHover: true
+  })
+};
+
+const info=()=>{
+  message.info('info',{keepAliveOnHover:true});
+};
+
 </script>
 <template>
     <nSpace vertical>
@@ -106,11 +141,21 @@ const menuOptions: MenuOption[] = [
                 :options="menuOptions"
                 accordion />
             </nLayoutSider>
-            <nLayout >
+            <nLayout has-sider>
                     <nLayoutHeader :inverted="getDarkTheme" >
                         header
                     </nLayoutHeader>
                     <nLayoutSider :inverted="getDarkTheme" class="layout-content">
+                        <RouterView  />
+                        <n-button @click="handleConfirm">
+                          警告
+                        </n-button>
+                        <n-button @click="notify('success')">
+                          成功
+                        </n-button>
+                        <n-button @click="info">
+                          信息（Hover不消失）
+                        </n-button>
                         <nSpace><nSwitch size="large" v-model:value="getDarkTheme" />inverted </nSpace>
                         <div class="layout-content-main layout-content-main-fix fluid-header">
                             內容

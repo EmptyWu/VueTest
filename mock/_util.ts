@@ -19,7 +19,9 @@ export function resultPageSuccess<T=any>(
 
     return {
         ...resultSuccess({
-            page,pageSize,pageCount:list.length,list:pageData
+            page,pageSize,
+            pageCount:list.length,
+            list:pageData
         }),message,
     };
 }
