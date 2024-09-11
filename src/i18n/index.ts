@@ -13,7 +13,7 @@ const i18n=createI18n<[MessageSchema], 'zh-TW' | 'en-US'|'ja'>({
     messages:{
         'zh-TW': zhTw,
         'en-US': en,
-        'ja':ja
+        'ja-JP':ja
     }
 });
 

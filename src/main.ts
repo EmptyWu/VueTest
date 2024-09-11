@@ -6,14 +6,17 @@ import { createPinia } from 'pinia';
 
 import App from './App.vue';
 import router,{setupRouter} from './router';
-import { setupNaive } from './plugins/naive.js';
+import { setupNaive } from './plugins/naive';
+import { setupStore } from './stores/index';
 
 async function bootstrap() {
     const app = createApp(App)
+
+    setupStore(app);
     setupNaive(app);
 
     app.use(i18n);
-    app.use(createPinia())
+    
 
     setupRouter(app); 
 

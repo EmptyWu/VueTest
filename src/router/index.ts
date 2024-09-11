@@ -23,8 +23,16 @@ const sortRoute=(a,b)=> (a.meta?.sort ?? 0) - (b.meta?.sort ?? 0);
 
 routeModuleList.sort(sortRoute);
 
+const LoginRoute:RouteRecordRaw={
+  path: '/login',
+  name: 'login',
+  component: ()=>import('@/views/login/index.vue'),
+  meta:{
+    title:'登入',
+  },
+};
 
-export const constantRouter:RouteRecordRaw[] = [
+export const constantRouter:RouteRecordRaw[] = [LoginRoute,
   {
     path: '/',
     name: 'home',
@@ -34,6 +42,15 @@ export const constantRouter:RouteRecordRaw[] = [
         path: 'about',
         name: 'about',
         component: ()=>import('../views/AboutView.vue')
+      },{
+        path: 'viewrohsproductlist',
+        name: 'viewrohsproductlist',
+        component: ()=>import('../views/ViewRohsProductList.vue')
+      },
+      {
+        path: 'Sample',
+        name: 'Sample',
+        component: ()=>import('../views/SampleView.vue')
       }
     ]
   },
@@ -41,7 +58,7 @@ export const constantRouter:RouteRecordRaw[] = [
 ];
   
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),
   routes: constantRouter
