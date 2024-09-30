@@ -4,12 +4,12 @@ import {isFunction} from '@/utils/is';
 
 import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
-import { CreateAxiosOptions,RequestOptions,Result } from './types';
+import type {CreateAxiosOptions,RequestOptions,Result} from './types';
 import { AxiosCanceler } from './axiosCancel';
 
-export { AxiosRequestConfig } from './axiosTransform';
+export type { AxiosRequestConfig } from './axiosTransform';
 
-export class Vaxios{
+export class VAxios{
     private axiosInstance:AxionInstance;
     private options:CreateAxiosOptions;
 

@@ -30,12 +30,7 @@ import {FileInvoice,
 
 import { useI18n } from 'vue-i18n';
 
-import { useUserStore } from '@/stores/modules/user';
-const userStore= useUserStore();
 
-userStore.setToken('1234567890');
-
-console.log('token',userStore.getToken);
 
 const {currentLocale,toggleLocale} =inject('locale');
  

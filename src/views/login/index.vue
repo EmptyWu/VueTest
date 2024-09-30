@@ -6,9 +6,7 @@ import { PersonOutline,LockClosedOutline } from '@vicons/ionicons5';
 import { useMessage } from 'naive-ui';
 import axios from 'axios';
 
-import { useUserStore } from '@/stores/modules/user';
-const userStore = useUserStore();
-console.log('login-token',userStore.getToken);
+
 
 const router = useRouter();
 const formRef=ref();

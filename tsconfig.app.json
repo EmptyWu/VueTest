@@ -9,7 +9,8 @@
     "build/**/*.ts",
     "build/**/*.d.ts",
     "mock/**/*.ts",
-    "components.d.ts",
+    "components.d.ts", 
+    "locales/**/*.ts",
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {

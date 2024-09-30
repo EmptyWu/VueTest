@@ -1,8 +1,9 @@
 import { VAxios } from './Axios';
 import { AxiosTransform } from './axiosTransform';
-import axios ,{AxiosResponse} from 'axios';
+import axios from 'axios';
+import type {AxiosResponse} from 'axios';
 import {deepMerge} from '@/utils/index'
-import { Result, CreateAxiosOptions,RequestOptions} from './types';
+import type { Result, CreateAxiosOptions,RequestOptions} from './types';
 import { useGlobSetting } from '@/hooks/setting/index';
 import { ContentTypeEnum,ResultEnum } from '@/enums/httpEnum';
 import { PageEnum } from '@/enums/pageEnum';
@@ -39,6 +40,7 @@ const transform: AxiosTransform = {
       }
   
       const { data } = res;
+      console.log('asiox_index',data);
   
       const $dialog = window['$dialog'];
       const $message = window['$message'];

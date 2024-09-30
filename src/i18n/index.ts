@@ -1,11 +1,11 @@
 import { createI18n} from 'vue-i18n'
-import zhTw from './locales/zhTw';
-import en from './locales/en';
-import ja from './locales/ja';
+import zhTw from '../../locales/zhTw';
+import en from '../../locales/en';
+import jaJP from '../../locales/ja';
 
 type MessageSchema = typeof zhTw;
 
-const i18n=createI18n<[MessageSchema], 'zh-TW' | 'en-US'|'ja'>({
+const i18n=createI18n<[MessageSchema], 'zh-TW' | 'en-US'|'ja-JP'>({
     legacy:false,
     locale:'zh-TW',
     fallbackLocale:'zh-TW',
@@ -13,7 +13,7 @@ const i18n=createI18n<[MessageSchema], 'zh-TW' | 'en-US'|'ja'>({
     messages:{
         'zh-TW': zhTw,
         'en-US': en,
-        'ja-JP':ja
+        'ja-JP':jaJP
     }
 });
 
